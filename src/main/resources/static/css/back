@@ -1,0 +1,24 @@
+/*btn init*/
+.wraper .btn{display: block;}
+
+.check-slide:checked.s1 ~ .contain{transform:translate(0%,0);}
+.check-slide:checked.s1 ~ .wraper .btn-left1-4{display:block;}
+.check-slide:checked.s1 ~ .wraper .btn-right1-2{display:block;}
+/*
+.check-slide:checked.s2 ~ .contain{transform:translate(-25%,0);}
+.check-slide:checked.s2 ~ .wraper .btn-left2-1{display:block;}
+.check-slide:checked.s3 ~ .wraper .btn-right2-3{display:block;}
+
+.check-slide:checked.s3 ~ .contain{transform:translate(-50%,0);}
+.check-slide:checked.s3 ~ .wraper .btn-left3-2{display:block;}
+.check-slide:checked.s3 ~ .wraper .btn-right3-4{display:block;}
+
+.check-slide:checked.s4 ~ .contain{transform:translate(-75%,0);}
+.check-slide:checked.s4 ~ .wraper .btn-left4-3{display:block;}
+.check-slide:checked.s4 ~ .wraper .btn-right1-4{display:block;}
+*/
+/*slider init*/
+.check-slide:checked.s1 ~ .contain{transform:translate(-0%,0);}
+.check-slide:checked.s2 ~ .contain{transform:translate(-25%,0);}
+.check-slide:checked.s3 ~ .contain{transform:translate(-50%,0);}
+.check-slide:checked.s4 ~ .contain{transform:translate(-75%,0);}

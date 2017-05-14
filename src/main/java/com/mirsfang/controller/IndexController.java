@@ -2,16 +2,17 @@ package com.mirsfang.controller;/**
  * Created by MirsFang on 2017/5/11.
  */
 
-import com.mirsfang.model.User;
-import com.mirsfang.service.UserService;
+import com.mirsfang.model.Banner;
+import com.mirsfang.model.commdity.CommdityType;
+import com.mirsfang.service.BannerService;
+import com.mirsfang.service.IndexPush;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
+import java.util.List;
 
 /***
  *作者：MirsFang    
@@ -24,25 +25,22 @@ import java.util.Date;
 public class IndexController {
 
     @Autowired
-    private UserService userService;
+    private IndexPush indexPush;
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
-    public String index(){
+    @Autowired
+    private BannerService bannerService;
+
+    @RequestMapping(value = "/")
+    public String index(ModelMap modelMap){
+        //得到类型
+        List<CommdityType> types=indexPush.findByFirstAccountId(11);
+        modelMap.addAttribute("push",types);
+
+        //Banner
+        List<Banner> banners=bannerService.findAll();
+        modelMap.addAttribute("banner",banners);
         return "index";
     }
 
-    @RequestMapping(value = "/add",method = RequestMethod.GET)
-    public String addUser(){
-        User user=new User();
-        user.setUsername("admin");
-        user.setPassword("admin");
-        user.setNickname("admin");
-        user.setBalance(1000);
-        user.setEmail("mirsfang@163.com");
-        user.setPhone("18757178184");
-        user.setRegtime(new Date().getTime()+"");
-        user.setPaypassword("123456");
-        userService.save(user);
-        return "success";
-    }
+
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="utf-8">
+	<meta charset="utf-8" http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>小米首页</title>
 	<link rel="stylesheet" type="text/css" href="css/base.css"/>
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
@@ -13,6 +13,7 @@
 	<!--顶部菜单开始-->
 	<nav id="nav" class="site-topbar">
 		<div class="wraper">
+			<!--/*@thymesVar id="push" type="list"*/-->
 			<ul class="nav-left">
 				<li><a href="#">小米商城</a></li>
 				<li><a href="#">MUI</a></li>
@@ -379,192 +380,30 @@
 	<!--中部区域开始-->
 	<div class="wraper">
 		<section id="main" class="site-main clear_bottom">
-			<aside class="main-left"> 
-				<ul class="category-list">
-					<li>
-						<a href="#"><span>手机</span><span> 平板</span><span>电话卡</span> </a>
+			<aside class="main-left">
+				<ul class="category-list" >
+					<li th:each="commdity:${push}">
+						<a href="#"><span th:text="${commdity.typename}">手机</span></a>
 						<div class="content">
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_img1.jpg">小米手机5<a href="#" class="btn">选购</a></li>
-								<li><img src="./images/index_sidenav_img1.jpg">小米手机5<a href="#" class="btn">选购</a></li>
-								<li><img src="./images/index_sidenav_img1.jpg">小米手机5<a href="#" class="btn">选购</a></li>
-								<li><img src="./images/index_sidenav_img1.jpg">小米手机5</li>
-								<li><img src="./images/index_sidenav_img1.jpg">小米手机5<a href="#" class="btn">选购</a></li>
-								<li><img src="./images/index_sidenav_img1.jpg">小米手机5<a href="#" class="btn">选购</a></li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<a href="#"><span>笔记本<span></a>
-						<div class="content">
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_notebook1.jpg">小米笔记本</li>
-								<li><img src="./images/index_sidenav_notebook1.jpg">小米笔记本</li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<a href="#"><span>电视</span> <span>盒子</span></a>
-
-						<div class="content">
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-							</ul>
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-							</ul>
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-								<li><img src="./images/index_sidenav_tv1.jpg">小米电视盒子</li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<a href="#"><span>路由器</span> <span>智能硬件</span></a>
-						<div class="content">
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-								<li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-								<li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-								<li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-								<li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-								<li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-							</ul>
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-								<li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-								<li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-								<li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-								<li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-								<li><img src="./images/index_sidenav_vr1.jpg">小米vr眼镜玩具版</li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<a href="#"><span>移动电源</span> <span>电池</span></a>
-						<div class="content">
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-								<li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-								<li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-								<li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-								<li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-							</ul>
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-								<li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-								<li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-								<li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-								<li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-							</ul>
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-								<li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-								<li><img src="./images/index_sidenav_power1.jpg">小米移动电源</li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<a href="#"><span>耳机</span> <span>音箱</span></a>
-						<div class="content">
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-								<li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-								<li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-								<li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-								<li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-								<li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-							</ul>
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-								<li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-								<li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-								<li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-								<li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-								<li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-							</ul>
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-								<li><img src="./images/index_sidenav_earphone1.jpg">小米头戴式耳机</li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<a href="#"><span>保护套</span> <span>后盖</span></a>
-						<div class="content">
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_protect1.jpg">保护套 保护壳</li>
-								<li><img src="./images/index_sidenav_protect1.jpg">保护套 保护壳</li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<a href="#"><span>贴膜</span> <span>其他配件</span></a>
-						<div class="content">
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_pole1.jpg">自拍杆</li>
-								<li><img src="./images/index_sidenav_pole1.jpg">自拍杆</li>
-								<li><img src="./images/index_sidenav_pole1.jpg">自拍杆</li>
-								<li><img src="./images/index_sidenav_pole1.jpg">自拍杆</li>
-								<li><img src="./images/index_sidenav_pole1.jpg">自拍杆</li>
-								<li><img src="./images/index_sidenav_pole1.jpg">自拍杆</li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<a href="#"><span>米兔</span> <span>服装</a>
-						<div class="content">
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_rubit1.jpg">米兔</li>
-								<li><img src="./images/index_sidenav_rubit1.jpg">米兔</li>
-								<li><img src="./images/index_sidenav_rubit1.jpg">米兔</li>
-								<li><img src="./images/index_sidenav_rubit1.jpg">米兔</li>
-							</ul>
-						</div>
-					
-					</li>
-					<li>
-						<a href="#"><span>箱包</span> <span>其他周边</span></a>
-						<div class="content">
-							<ul class="good-list">
-								<li><img src="./images/index_sidenav_bag1.jpg">箱包</li>
-								<li><img src="./images/index_sidenav_bag1.jpg">箱包</li>
-								<li><img src="./images/index_sidenav_bag1.jpg">箱包</li>
-								<li><img src="./images/index_sidenav_bag1.jpg">箱包</li>
+							<ul class="good-list" th:each="commdi:${commdity.commodities}">
+								<li><img th:src="${commdi.image}" th:text="${commdi.commdname}"><a href="#" class="btn">选购</a></li>
 							</ul>
 						</div>
 					</li>
 				</ul>
 			</aside>
-			<!--<div id="test">123</div>-->
+			<!--bannner 图-->
 			<section class="main-right">
 				<div class="slider">
 					<ul class="contain">
-						<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic1.jpg"></a></li>
-						<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic2.jpg"></a></li>
-						<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic3.jpg"></a></li>
-						<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic4.jpg"></a></li>
-						<li class="item"><a href="#" alt=""><img src="./images/index_slider_pic5.jpg"></a></li>
+						<li class="item" th:each="banner_details:${banner}"><a href="#" alt=""><img th:src="${banner_details.image}"></a></li>
 					</ul>
 				</div>
 			</section>
 		</section>
 	</div>
-		
+
+	<!--首页侧边栏下面的-->
 	<section id="adv" class="wraper site-adv m-box clear_bottom">
 		<div class="span4">
 			<ul class="rect6">
@@ -578,9 +417,9 @@
 		</div>
 		<div class="span16">
 			<ul class="m-cols m-col-3">
-				<li class="col"><img src="images/adv1.jpg"></li>
-				<li class="col"><img src="images/adv2.jpg"></li>
-				<li class="col"><img src="images/adv3.jpg"></li>
+				<li class="col"><img src="./images/adv1.jpg"></li>
+				<li class="col"><img src="./images/adv2.jpg"></li>
+				<li class="col"><img src="./images/adv3.jpg"></li>
 			</ul>
 		</div>
 		

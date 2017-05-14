@@ -4,6 +4,7 @@ package com.mirsfang.model;/**
 
 
 import com.mirsfang.model.commdity.Commodity;
+import com.mirsfang.model.commdity.OrderCommodtiy;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,20 +24,15 @@ public class Orders implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private int id;
-
     //编号  时间戳
     private String ordernumber;
-
-    //商品
+    //一个订单对应多个订单商品
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "order")
-    private Set<Commodity> commodities;
-
+    private Set<OrderCommodtiy> commodities;
     //购买数量
     private int orderQuantity;
-
     //订单金额
     private double price;
-
     //购买用户
     @ManyToOne(optional = false)
     private User user;
@@ -45,14 +41,13 @@ public class Orders implements Serializable{
     //        0:未付款 1:已付款 2:运输中 3:收货成功
     //        3:申请退货 4: 拒绝退货 5:同意退货 6:退货中 7:退货成功
     private int state;
-
     //创建时间
     private String createtime;
 
     public Orders() {
     }
 
-    public Orders(String ordernumber, Set<Commodity> commodities, int orderQuantity, double price, User user, int state, String createtime) {
+    public Orders(String ordernumber, Set<OrderCommodtiy> commodities, int orderQuantity, double price, User user, int state, String createtime) {
         this.ordernumber = ordernumber;
         this.commodities = commodities;
         this.orderQuantity = orderQuantity;
@@ -78,11 +73,11 @@ public class Orders implements Serializable{
         this.ordernumber = ordernumber;
     }
 
-    public Set<Commodity> getCommodities() {
+    public Set<OrderCommodtiy> getCommodities() {
         return commodities;
     }
 
-    public void setCommodities(Set<Commodity> commodities) {
+    public void setCommodities(Set<OrderCommodtiy> commodities) {
         this.commodities = commodities;
     }
 

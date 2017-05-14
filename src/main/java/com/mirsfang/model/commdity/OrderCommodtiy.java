@@ -1,27 +1,23 @@
-package com.mirsfang.model.commdity;/**
- * Created by MirsFang on 2017/5/11.
- */
+package com.mirsfang.model.commdity;
 
 import com.mirsfang.model.Orders;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
-/***
- *作者：MirsFang    
- *模式：       
- *时间：2017/05/11/下午12:15  
- *备注  商品信息
- ***/
-
+/**
+ * Created by Administrator on 2017/5/14.
+ * 订单商品表
+ */
 @Entity
-public class Commodity implements Serializable {
+public class OrderCommodtiy implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private int id;
+    //在商品表中的id
+    private int commdId;
     //商品名称
     private String commdname;
     //商品库存
@@ -36,20 +32,21 @@ public class Commodity implements Serializable {
     private double price;
     //价值
     private double value;
-    //包含版本
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "commodity")
-    private Set<CommdityVersion> versions;
-    //包含颜色
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "commodity")
-    private Set<CommdityColor> colors;
+    //颜色
+    private String color;
     //类型
+    private String versions;
+    //商品的类型
+    private String commditytype;
+    //多个订单商品对应一个订单
     @ManyToOne(optional = false)
-    private CommdityType commditytype;
+    private Orders order;
 
-    public Commodity() {
+    public OrderCommodtiy() {
     }
 
-    public Commodity(String commdname, int stock, String describition, String image, String releasetime, double price, double value, Set<CommdityVersion> versions, Set<CommdityColor> colors, CommdityType commditytype) {
+    public OrderCommodtiy(int commdId, String commdname, int stock, String describition, String image, String releasetime, double price, double value, String color, String versions, String commditytype, Orders order) {
+        this.commdId = commdId;
         this.commdname = commdname;
         this.stock = stock;
         this.describition = describition;
@@ -57,9 +54,10 @@ public class Commodity implements Serializable {
         this.releasetime = releasetime;
         this.price = price;
         this.value = value;
+        this.color = color;
         this.versions = versions;
-        this.colors = colors;
         this.commditytype = commditytype;
+        this.order = order;
     }
 
     public int getId() {
@@ -68,6 +66,14 @@ public class Commodity implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getCommdId() {
+        return commdId;
+    }
+
+    public void setCommdId(int commdId) {
+        this.commdId = commdId;
     }
 
     public String getCommdname() {
@@ -126,27 +132,35 @@ public class Commodity implements Serializable {
         this.value = value;
     }
 
-    public Set<CommdityVersion> getVersions() {
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getVersions() {
         return versions;
     }
 
-    public void setVersions(Set<CommdityVersion> versions) {
+    public void setVersions(String versions) {
         this.versions = versions;
     }
 
-    public Set<CommdityColor> getColors() {
-        return colors;
-    }
-
-    public void setColors(Set<CommdityColor> colors) {
-        this.colors = colors;
-    }
-
-    public CommdityType getCommditytype() {
+    public String getCommditytype() {
         return commditytype;
     }
 
-    public void setCommditytype(CommdityType commditytype) {
+    public void setCommditytype(String commditytype) {
         this.commditytype = commditytype;
+    }
+
+    public Orders getOrder() {
+        return order;
+    }
+
+    public void setOrder(Orders order) {
+        this.order = order;
     }
 }

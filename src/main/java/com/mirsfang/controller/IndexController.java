@@ -3,9 +3,11 @@ package com.mirsfang.controller;/**
  */
 
 import com.mirsfang.model.Banner;
+import com.mirsfang.model.StartCommdity;
 import com.mirsfang.model.commdity.CommdityType;
 import com.mirsfang.service.BannerService;
 import com.mirsfang.service.IndexPush;
+import com.mirsfang.service.StarCommdityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,9 @@ public class IndexController {
     @Autowired
     private BannerService bannerService;
 
+    @Autowired
+    private StarCommdityService starCommdityService;
+
     @RequestMapping(value = "/")
     public String index(ModelMap modelMap){
         //得到类型
@@ -39,6 +44,12 @@ public class IndexController {
         //Banner
         List<Banner> banners=bannerService.findAll();
         modelMap.addAttribute("banner",banners);
+
+        //明星单品
+        List<StartCommdity> startCommdities = starCommdityService.findByFirstId(10);
+        modelMap.addAttribute("star",startCommdities);
+
+
         return "index";
     }
 

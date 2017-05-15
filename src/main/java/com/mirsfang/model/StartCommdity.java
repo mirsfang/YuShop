@@ -21,4 +21,13 @@ public class StartCommdity {
     private int commdity_id;
 
     private String  image;
+    //标题
+    private String title;
+    //描述
+    private String descri;
+    //价格
+    private double price;
+
+    //外连接
+    private String url;
 }

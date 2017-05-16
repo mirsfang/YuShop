@@ -1,4 +1,5 @@
-package com.mirsfang.model;/**
+package com.mirsfang.model;
+/**
  * Created by MirsFang on 2017/5/15.
  */
 

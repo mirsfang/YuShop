@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html  lang="zh-CN">
+<html  xmlns:th="http://www.thymeleaf.org" lang="zh-CN" >
 <head>
-	<meta charset="utf-8">
+	<meta charset="utf-8" http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>详情页</title>
 	<link rel="stylesheet" type="text/css" href="css/base.css">
 	<link rel="stylesheet" type="text/css" href="css/comm.css">
@@ -19,8 +19,8 @@
 				</h1>
 			</div>
 			<div class="header-right options">
-				<a href="">登录</a>
-				<a href="">注册</a>
+				<a href="" th:text="登录">登录</a>
+				<a href="" th:text="注册">注册</a>
 			</div>
 		</div>
 	</header>

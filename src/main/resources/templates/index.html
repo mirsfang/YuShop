@@ -386,7 +386,7 @@
                         <a href="#"><span th:text="${commdity.typename}">手机</span></a>
                         <div class="content">
                             <ul class="good-list" th:each="commdi:${commdity.commodities}">
-                                <li><img th:src="${commdi.image}" th:text="${commdi.commdname}"><a href="#" class="btn">选购</a>
+                                <li><img th:src="${commdi.image}" th:text="${commdi.commdname}"><a th:href="@{/details/commid.id}" class="btn">选购</a>
                                 </li>
                             </ul>
                         </div>

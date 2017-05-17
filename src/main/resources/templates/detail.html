@@ -7,6 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="css/comm.css">
 	<link rel="stylesheet" type="text/css" href="css/detail.css">
 	<link rel="stylesheet" type="text/css" href="css/media_detail.css">
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/detail.js"></script>
 </head>
 <body>
 	<!--头部开始-->
@@ -38,17 +40,15 @@
 					<span class="price" th:text="${commodity.price}+元">1499元</span>
 					<a href="" class="link">深入了解产品</a>
 				</header>
-				<p class="tip" th:text="${commodity.describition}">
-					红米Pro 8月16日早10点发售，购机即赠 Type-C 转接
-				</p>
 				<section class="options">
 					<hgroup class="opt-title">
+						<br/>
+						<br/>
 						<h3>1、选择版本</h3>
-						<h4 class="desc">Helio X20 最高主频 2.1GHz ，前置指纹识别，全网通2.0</h4>	
+						<h4 class="desc" th:text="${commodity.describition}">Helio X20 最高主频 2.1GHz ，前置指纹识别，全网通2.0</h4>
 					</hgroup>
 					<ul class="opt-ul">
-						<li><input class="option-btns" type="radio" name="version" id="version1" hidden><label class="opt-item" for="version1">标配版 3GB内存+32GB容量</label></li>
-						<li><input class="option-btns" type="radio" name="version" id="version2" hidden><label class="opt-item" for="version2">高配版 3GB内存+64GB容量</label></li>
+						<li th:each="vserion:${commodity.versions}"><input class="option-btns" type="radio" name="version" id="version1" hidden><label class="opt-item" for="version1" th:text="${vserion.verionDescribe}">标配版 3GB内存+32GB容量</label></li>
 					</ul>
 				</section>
 				<section class="options">
@@ -56,15 +56,13 @@
 						<h3>2、选择颜色</h3>
 					</hgroup>
 					<ul class="opt-ul">
-						<li><input class="option-btns" type="radio" name="color" id="color1" hidden><label class="opt-item" for="color1"><div class="i_color i_white"></div>白色</label></li>
-						<li><input class="option-btns" type="radio" name="color" id="color2" hidden><label class="opt-item" for="color2"><div class="i_color i_black"></div>黑色</label></li>
-						<li><input class="option-btns" type="radio" name="color" id="color3" hidden><label class="opt-item" for="color3"><div class="i_color i_gold"></div>金色</label></li>
+						<li th:each="color:${commodity.colors}"><input class="option-btns" type="radio" name="color" id="color1" hidden><label class="opt-item" for="color1" th:text="${color.colorDescribe}"><div class="i_color i_white" th:class="'background:'+@{${color.color}}"></div>白色</label></li>
 					</ul>
 				</section>
 				<article>
 					<h3 class="notice">您选择了一下产品</h3>
 					<p class="desc">红米Pro 标准版 3GB内存+32GB容量</p>
-					<button class="btn">下一步</button>
+					<button id="btn_next" class="btn">下一步</button>
 				</article>
 			</section>
 		</section>

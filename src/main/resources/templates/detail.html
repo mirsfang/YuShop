@@ -28,28 +28,17 @@
 	
 	<!--主体开始-->
 	<main id="main" class="site-main">
-		<nav class="wraper nav">
-			<ul>
-				<li class="active"><a href="">红米Pro</a></li>
-				<li><a href="">红米Note3</a></li>
-				<li><a href="">红米手机3S</a></li>
-				<li><a href="">小米手机5</a></li>
-				<li><a href="">小米Max</a></li>
-				<li><a href="">红米手机3</a></li>
-				<li><a href="">对比手机</a></li>
-			</ul>
-		</nav>
 		<section id="prod-intro" class="wraper prod-intro">
 			<aside class="main-left intro-left">
 				<img src="./images/detail_main1.jpg" class="prod-pic">
 			</aside>
 			<section class="main-right intro-right">
 				<header class="prod-title">
-					<h2 class="name">购买红米</h2>
-					<span class="price">1499元</span>
+					<h2 class="name" th:text="购买+${commodity.commdname}">购买红米</h2>
+					<span class="price" th:text="${commodity.price}+元">1499元</span>
 					<a href="" class="link">深入了解产品</a>
 				</header>
-				<p class="tip">
+				<p class="tip" th:text="${commodity.describition}">
 					红米Pro 8月16日早10点发售，购机即赠 Type-C 转接
 				</p>
 				<section class="options">

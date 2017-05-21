@@ -9,8 +9,7 @@ import org.springframework.data.repository.Repository;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/5/15.
- * 明星
+ * 明星产品
  */
 public interface StarCommdityService extends Repository<StartCommdity,Integer> {
 

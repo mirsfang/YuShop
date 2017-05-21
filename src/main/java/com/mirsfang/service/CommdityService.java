@@ -13,8 +13,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  ***/
 
 public interface CommdityService extends JpaRepository<Commodity,Integer>{
-
     //查找商品
     Commodity findById(int id);
-
 }

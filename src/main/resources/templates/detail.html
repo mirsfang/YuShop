@@ -32,7 +32,7 @@
 	<main id="main" class="site-main">
 		<section id="prod-intro" class="wraper prod-intro">
 			<aside class="main-left intro-left">
-				<img src="./images/detail_main1.jpg" class="prod-pic">
+				<img th:src="${commodity.big_img}" class="prod-pic">
 			</aside>
 			<section class="main-right intro-right">
 				<header class="prod-title">
@@ -48,7 +48,10 @@
 						<h4 class="desc" th:text="${commodity.describition}">Helio X20 最高主频 2.1GHz ，前置指纹识别，全网通2.0</h4>
 					</hgroup>
 					<ul class="opt-ul">
-						<li th:each="vserion:${commodity.versions}"><input class="option-btns" type="radio" name="version" id="version1" hidden><label class="opt-item" for="version1" th:text="${vserion.verionDescribe}">标配版 3GB内存+32GB容量</label></li>
+						<li th:each="vserion:${commodity.versions}">
+							<input class="option-btns" type="radio" name="version" id="version1" th:id="version+${vserionStat.index}" hidden>
+							<label class="opt-item" for="version1" th:for="version+${vserionStat.index}" th:text="${vserion.verionDescribe}" th:onclick="'javascript:versonClick('+${vserion.id}+')'">标配版 3GB内存+32GB容量</label>
+						</li>
 					</ul>
 				</section>
 				<section class="options">
@@ -56,13 +59,17 @@
 						<h3>2、选择颜色</h3>
 					</hgroup>
 					<ul class="opt-ul">
-						<li th:each="color:${commodity.colors}"><input class="option-btns" type="radio" name="color" id="color1" hidden><label class="opt-item" for="color1" th:text="${color.colorDescribe}"><div class="i_color i_white" th:class="'background:'+@{${color.color}}"></div>白色</label></li>
+						<li th:each="color:${commodity.colors}">
+							<input class="option-btns" type="radio" name="color" th:id="color+${colorStat.index}" id="color1" hidden>
+							<label class="opt-item" for="color1"  th:for="color+${colorStat.index}"  th:text="${color.colorDescribe}" th:onclick="'javascript:colorClick('+${color.id}+')'">
+								<div class="i_color i_white" th:class="'background:'+@{${color.color}}"></div>
+								白色</label>
+						</li>
 					</ul>
 				</section>
 				<article>
-					<h3 class="notice">您选择了一下产品</h3>
-					<p class="desc">红米Pro 标准版 3GB内存+32GB容量</p>
-					<button id="btn_next" class="btn">下一步</button>
+					<h3 class="notice">请再次确认您的商品</h3>
+					<button id="btn_next" class="btn"  th:onclick="'javascript:submitOrder('+${commodity.id}+')'">下单</button>
 				</article>
 			</section>
 		</section>

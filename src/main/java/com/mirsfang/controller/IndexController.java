@@ -27,13 +27,13 @@ import java.util.List;
 public class IndexController {
 
     @Autowired
-    private IndexPush indexPush;
+    private IndexPush indexPush;    //首页推送数据
 
     @Autowired
-    private BannerService bannerService;
+    private BannerService bannerService;    //Banner广告图数据
 
     @Autowired
-    private StarCommdityService starCommdityService;
+    private StarCommdityService starCommdityService;    //明星产品数据
 
     @RequestMapping(value = "/")
     public String index(ModelMap modelMap){

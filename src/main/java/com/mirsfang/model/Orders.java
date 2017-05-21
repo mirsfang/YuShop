@@ -4,7 +4,6 @@ package com.mirsfang.model;/**
 
 
 import com.mirsfang.model.commdity.Commodity;
-import com.mirsfang.model.commdity.OrderCommodtiy;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,8 +26,7 @@ public class Orders implements Serializable{
     //编号  时间戳
     private String ordernumber;
     //一个订单对应多个订单商品
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "order")
-    private Set<OrderCommodtiy> commodities;
+    private Commodity commodityId;
     //购买数量
     private int orderQuantity;
     //订单金额
@@ -47,9 +45,9 @@ public class Orders implements Serializable{
     public Orders() {
     }
 
-    public Orders(String ordernumber, Set<OrderCommodtiy> commodities, int orderQuantity, double price, User user, int state, String createtime) {
+    public Orders(String ordernumber, Commodity commodityId, int orderQuantity, double price, User user, int state, String createtime) {
         this.ordernumber = ordernumber;
-        this.commodities = commodities;
+        this.commodityId = commodityId;
         this.orderQuantity = orderQuantity;
         this.price = price;
         this.user = user;
@@ -73,12 +71,12 @@ public class Orders implements Serializable{
         this.ordernumber = ordernumber;
     }
 
-    public Set<OrderCommodtiy> getCommodities() {
-        return commodities;
+    public Commodity getCommodityId() {
+        return commodityId;
     }
 
-    public void setCommodities(Set<OrderCommodtiy> commodities) {
-        this.commodities = commodities;
+    public void setCommodityId(Commodity commodityId) {
+        this.commodityId = commodityId;
     }
 
     public int getOrderQuantity() {
@@ -121,3 +119,4 @@ public class Orders implements Serializable{
         this.createtime = createtime;
     }
 }
+

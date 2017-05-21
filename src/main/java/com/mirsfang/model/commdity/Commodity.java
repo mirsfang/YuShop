@@ -30,12 +30,16 @@ public class Commodity implements Serializable {
     private String describition;
     //图片
     private String image;
+    //
+    private String big_img;
     //发布时间
     private String releasetime;
     //价格
     private double price;
     //价值
     private double value;
+    //下面HTML详情展示
+    private String htmlDetails;
     //包含版本
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "commodity")
     private Set<CommdityVersion> versions;
@@ -49,14 +53,16 @@ public class Commodity implements Serializable {
     public Commodity() {
     }
 
-    public Commodity(String commdname, int stock, String describition, String image, String releasetime, double price, double value, Set<CommdityVersion> versions, Set<CommdityColor> colors, CommdityType commditytype) {
+    public Commodity(String commdname, int stock, String describition, String image, String big_img, String releasetime, double price, double value, String htmlDetails, Set<CommdityVersion> versions, Set<CommdityColor> colors, CommdityType commditytype) {
         this.commdname = commdname;
         this.stock = stock;
         this.describition = describition;
         this.image = image;
+        this.big_img = big_img;
         this.releasetime = releasetime;
         this.price = price;
         this.value = value;
+        this.htmlDetails = htmlDetails;
         this.versions = versions;
         this.colors = colors;
         this.commditytype = commditytype;
@@ -102,6 +108,14 @@ public class Commodity implements Serializable {
         this.image = image;
     }
 
+    public String getBig_img() {
+        return big_img;
+    }
+
+    public void setBig_img(String big_img) {
+        this.big_img = big_img;
+    }
+
     public String getReleasetime() {
         return releasetime;
     }
@@ -124,6 +138,14 @@ public class Commodity implements Serializable {
 
     public void setValue(double value) {
         this.value = value;
+    }
+
+    public String getHtmlDetails() {
+        return htmlDetails;
+    }
+
+    public void setHtmlDetails(String htmlDetails) {
+        this.htmlDetails = htmlDetails;
     }
 
     public Set<CommdityVersion> getVersions() {

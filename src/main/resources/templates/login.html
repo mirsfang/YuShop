@@ -21,11 +21,14 @@
 				<h2 class="title">小米账号登录</h2>
 			</header>
 			<section class="section">
-				<form name="" method="" enctype="" id="login"></form>
+				<form  method="post" action="login">
+				<input name="action" value="login" type="hidden">
 				<input class="form-item" type="text" name="username" placeholder="邮箱/手机号码/小米账号"/><br>
 				<input class="form-item" type="password" name="password" placeholder="密码"><br>
-				<button class="form-item btn">立即登录</button><br>
+				<input class="form-item btn" value="立即登录" type="submit">
+				</form>
 			</section>
+
 			<footer class="footer">
 				<p class="desc">
 					<span>其他方式登录</span>

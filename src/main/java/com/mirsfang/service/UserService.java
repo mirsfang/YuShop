@@ -16,7 +16,6 @@ import org.springframework.data.repository.Repository;
 public interface UserService extends JpaRepository<User,Integer> {
 
     User findById(int id);
-
     //登录
     User findByUsernameAndPassword(String username,String password);
 

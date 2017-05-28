@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /***
- *作者：MirsFang    
- *模式：       
  *时间：2017/05/23/下午8:23  
  *备注      
  ***/

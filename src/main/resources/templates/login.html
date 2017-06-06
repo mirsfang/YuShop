@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="zh-CN">
+<html  xmlns:th="http://www.thymeleaf.org"   lang="zh-CN">
 <head>
 	<meta charset="utf-8">
 	<title>登录</title>
@@ -20,12 +20,13 @@
 				</h1>
 				<h2 class="title">小米账号登录</h2>
 			</header>
+			<div> <p th:text="${login_msg}"></p></div>
 			<section class="section">
 				<form  method="post" action="login">
 				<input name="action" value="login" type="hidden">
-				<input class="form-item" type="text" name="username" placeholder="邮箱/手机号码/小米账号"/><br>
+					<input class="form-item" type="text" name="username" placeholder="邮箱/手机号码/小米账号"/><br>
 				<input class="form-item" type="password" name="password" placeholder="密码"><br>
-				<input class="form-item btn" value="立即登录" type="submit">
+					<input class="form-item btn" value="立即登录" type="submit">
 				</form>
 			</section>
 

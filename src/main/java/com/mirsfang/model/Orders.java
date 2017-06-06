@@ -26,7 +26,7 @@ public class Orders implements Serializable{
     //编号  时间戳
     private String ordernumber;
     //一个订单对应多个订单商品
-    private Commodity commodityId;
+    private int commodityId;
     //购买数量
     private int orderQuantity;
     //订单金额
@@ -36,16 +36,30 @@ public class Orders implements Serializable{
     private User user;
 
     //订单状态 -1:关闭
-    //        0:未付款 1:已付款 2:运输中 3:收货成功
-    //        3:申请退货 4: 拒绝退货 5:同意退货 6:退货中 7:退货成功
+    //        0:未付款
+    //        1:已付款
+    //        2:运输中
+    //        3:收货成功
+    //        4:申请退货
+    //        5:拒绝退货
+    //        6:同意退货
+    //        7:退货中
+    //        8:退货成功
     private int state;
     //创建时间
     private String createtime;
 
+    //商品名称
+    private String commtidName;
+
+    //状态描述
+    @Transient
+    private String stateDesc;
+
     public Orders() {
     }
 
-    public Orders(String ordernumber, Commodity commodityId, int orderQuantity, double price, User user, int state, String createtime) {
+    public Orders(String ordernumber, int commodityId, int orderQuantity, double price, User user, int state, String createtime,String commtidName) {
         this.ordernumber = ordernumber;
         this.commodityId = commodityId;
         this.orderQuantity = orderQuantity;
@@ -53,6 +67,7 @@ public class Orders implements Serializable{
         this.user = user;
         this.state = state;
         this.createtime = createtime;
+        this.commtidName = commtidName;
     }
 
     public int getId() {
@@ -71,11 +86,11 @@ public class Orders implements Serializable{
         this.ordernumber = ordernumber;
     }
 
-    public Commodity getCommodityId() {
+    public int getCommodityId() {
         return commodityId;
     }
 
-    public void setCommodityId(Commodity commodityId) {
+    public void setCommodityId(int commodityId) {
         this.commodityId = commodityId;
     }
 
@@ -118,5 +133,46 @@ public class Orders implements Serializable{
     public void setCreatetime(String createtime) {
         this.createtime = createtime;
     }
+
+    public String getCommtidName() {
+        return commtidName;
+    }
+
+    public void setCommtidName(String commtidName) {
+        this.commtidName = commtidName;
+    }
+
+    public String getStateDesc() {
+        switch (getState()) {
+            case -1:
+                return "关闭";
+            case 0:
+                return "未付款";
+            case 1:
+                return "已付款";
+            case 2:
+                return "运输中";
+            case 3:
+                return "收货成功";
+            case 4:
+                return "申请退货";
+            case 5:
+                return "拒绝退货";
+            case 6:
+                return "同意退货";
+            case 7:
+                return "退货中";
+            case 8:
+                return "退货成功";
+            default:
+                return "正常";
+        }
+
+    }
+
+    public void setStateDesc(String stateDesc) {
+        this.stateDesc = stateDesc;
+    }
+
 }
 

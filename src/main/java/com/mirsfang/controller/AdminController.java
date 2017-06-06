@@ -7,6 +7,7 @@ import com.mirsfang.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -38,34 +39,31 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin_login", method = RequestMethod.POST)
-    public String postoAdminLogin(WebRequest webRequest, HttpSession httpSession) {
+    public String postoAdminLogin(WebRequest webRequest, org.apache.catalina.servlet4preview.http.HttpServletRequest httpSession) {
 
         String username = webRequest.getParameter("username");
         String password = webRequest.getParameter("password");
 
-        System.out.println("用户名 :" + username + "   密码:" + password);
-
         Admin admin = adminService.findUserByUsernameAndPassword(username, password);
-
         if (admin == null) {
             return "admin_login";
         } else {
             admin.setPassword("");
-            httpSession.setAttribute("admin", admin);
+            httpSession.getSession().setAttribute("admin", admin);
             return "redirect:admin";
         }
     }
 
 
     @RequestMapping(value = "/admin")
-    public String gotoAdmin() {
-        Enumeration e = getSession().getAttributeNames();
-        while (e.hasMoreElements()) {
-            System.out.println(e.nextElement());
+    public String gotoAdmin(ModelMap modelMap, org.apache.catalina.servlet4preview.http.HttpServletRequest httpSession) {
+        Admin admin = (Admin) httpSession.getSession().getAttribute("admin");
+        if(admin == null){
+            return "redirect:admin_login";
+        }else {
+            System.out.println("管理员 :"+admin.getNickname()+"已登录");
+            return "admin";
         }
-
-        System.out.println(getSession().getAttribute("admin").toString());
-        return "admin";
     }
 
 

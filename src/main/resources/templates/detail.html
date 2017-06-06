@@ -69,7 +69,7 @@
 				</section>
 				<article>
 					<h3 class="notice">请再次确认您的商品</h3>
-					<button id="btn_next" class="btn"  th:onclick="'javascript:submitOrder('+${commodity.id}+')'">下单</button>
+					<button id="btn_next" class="btn"  th:onclick="'javascript:submitOrder('+${commodity.id}+','+${userid}+')'">下单</button>
 				</article>
 			</section>
 		</section>

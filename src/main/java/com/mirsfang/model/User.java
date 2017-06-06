@@ -2,6 +2,8 @@ package com.mirsfang.model;/**
  * Created by MirsFang on 2017/5/11.
  */
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -134,6 +136,7 @@ public class User implements Serializable{
         this.regtime = regtime;
     }
 
+    @JsonBackReference
     public Set<Orders> getOrders() {
         return orders;
     }

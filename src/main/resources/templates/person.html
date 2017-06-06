@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ch">
+<html  xmlns:th="http://www.thymeleaf.org" lang="ch">
 
 	<head>
 		<meta charset="utf-8">
@@ -42,8 +42,28 @@
 				$(".toggle-btn").click(function() {
 					$("#leftMeun").toggleClass("show");
 					$("#rightContent").toggleClass("pd0px");
-				})
+				});
 			})
+
+			var select_id=0;
+			function submitOrder(order_id) {
+				select_id=order_id;
+			}
+
+			function reqTuihuo() {
+				fetch("/tuihuo?orderId="+select_id).then(function(data){
+					if (data.ok) {
+						data.json().then(function(obj) {
+							// 换成json格式
+							if(obj.status == 1){
+								alert("操作成功!");
+							}else {
+								alert("操作失败");
+							}
+						})
+					}
+				});
+			}
 		</script>
 		<!--[if lt IE 9]>
           <script src="js/html5shiv.min.js"></script>
@@ -92,7 +112,6 @@
 					<!-- 资源管理模块 -->
 					<div role="tabpanel" class="tab-pane active" id="sour">
 						<div class="check-div form-inline">
-							<button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addSource">添加资源</button>
 						</div>
 						<div class="data-div">
 							<div class="row tableHeader">
@@ -109,20 +128,20 @@
 									操作
 								</div>
 							</div>
-							<div class="tablebody">
+							<div class="tablebody" th:each="order:${orders}">
 								<div class="row">
-									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" th:text="${order.id}">
 										1 <!-- 订单id-->
 									</div>
 									<div id="topAD" class="col-lg-4 col-md-4 col-sm-4 col-xs-4" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSystem" aria-expanded="true" aria-controls="collapseOne">
-										<span>系统管理</span><!-- 订单内容-->
+										<span th:text="${order.commtidName}+'  状态: '+${order.stateDesc}">系统管理</span><!-- 订单内容-->
 									</div>
-									<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+									<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" th:text="${order.price}+'元'">
 										/admin/system/userlist/software/<!-- 订单价格-->
 									</div>
 									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 										<!-- 订单操作-->
-										<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">退货</button>
+										<button class="btn btn-danger btn-xs" data-toggle="modal" th:onclick="'javascript:submitOrder('+${order.id}+')'" data-target="#deleteSource">退货</button>
 									</div>
 								</div>
 
@@ -231,7 +250,7 @@
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-										<button type="button" class="btn btn-xs btn-danger" data-dismiss="modal">确定</button>
+										<button id="y_tui" type="button" class="btn btn-xs btn-danger" th:onclick="'javascript:reqTuihuo()'" data-dismiss="modal">确定</button>
 									</div>
 								</div>
 								<!-- /.modal-content -->

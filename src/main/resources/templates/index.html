@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" type="text/css" href="css/media_index.css"/>
     <link rel="stylesheet" type="text/css" href="css/mod.css"/>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/index.js"></script>
 </head>
 <body>
 <section>
@@ -20,15 +22,21 @@
                 <li><a href="#">移动版</a></li>
                 <li><a href="#">问题反馈</a></li>
             </ul>
-            <ul class="nav-right">
-                <li><a href="login.html">登录</a></li>
+            <ul id="no_login" class="nav-right">
+                <li><a href="/login">登录</a></li>
                 <li><a href="/reg">注册</a></li>
                 <li class="buyCar">
-                    <a class="i_car" href="登录">购物车（0）</a>
+                    <a class="i_car" href="/login">购物车（0）</a>
                     <div class="content"></div>
                 </li>
             </ul>
+
+            <ul id="login" class="nav-right">
+                <li><a id="login_name" href="/person"></a></li>
+            </ul>
         </div>
+
+
     </nav>
     <!--顶部菜单结束-->
     <!--头部开始-->
@@ -149,13 +157,10 @@
                 <input type="text" class="search" list="search-record" name="search">
                 <button class="btn">搜索</button>
                 <ul>
-                    <li>小宇手机5<span>约有11件</span></li>
-                    <li>小宇手机5<span>约有11件</span></li>
-                    <li>小宇手机5<span>约有11件</span></li>
-                    <li>小宇手机5<span>约有11件</span></li>
-                    <li>小宇手机5<span>约有11件</span></li>
-                    <li>小宇手机5<span>约有11件</span></li>
-                    <li>小宇手机5<span>约有11件</span></li>
+                    <li>坚果礼盒<span>约有1230件</span></li>
+                    <li>牛肉干<span>约有2231件</span></li>
+                    <li>三只松鼠<span>约有10000件</span></li>
+                    <li>舌尖上的诱惑<span>约有5321件</span></li>
                 </ul>
             </div>
         </div>
